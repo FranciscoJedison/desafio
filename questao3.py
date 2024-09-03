@@ -4,15 +4,12 @@ import json
 arquivo_json = 'faturamento.json'
 
 # Abrir e carregar o arquivo JSON
-with open(arquivo_json, 'r') as file:
+with open('faturamento.json', 'r') as file:
     dados = json.load(file)
 
-# Agora, você pode acessar os dados
-faturamento = dados['faturamento']
-print(faturamento)
 
 # Ignorar dias com faturamento zero
-faturamento_validos = [f for f in faturamento if f > 0]
+faturamento_validos = [dia["valor"] for dia in dados if dia["valor"] > 0]
 
 # Calcular o menor e o maior valor de faturamento
 menor_faturamento = min(faturamento_validos)
